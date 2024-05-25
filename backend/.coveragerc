@@ -1,0 +1,19 @@
+[run]
+branch = True
+omit = 
+    main.py
+    tests/*
+    */__init__.py
+    app/api/deps.py
+
+
+[report]
+show_missing = True
+skip_covered = False
+exclude_lines =
+    pragma: no cover
+    def __repr__
+    def __str__
+    def __init__
+    if self\.debug:
+    if self\.verbose:
