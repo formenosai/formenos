@@ -37,5 +37,8 @@ class Settings(BaseSettings):
 
     MLFLOW_TRACKING_URI: str
 
+    GITLAB_BASE_URI: str
+    GITLAB_ACCESS_TOKEN: str
+
 
 settings = Settings()

@@ -6,6 +6,7 @@ from fastapi.testclient import TestClient
 from httpx import Response
 
 from app.api import deps
+from app.clients.gitlab import GitLabClient
 from app.clients.mlflow import MLflowClient
 from app.main import app
 from tests import mlflow_test_data
@@ -49,3 +50,8 @@ def client() -> Generator:
         app.dependency_overrides[deps.get_mlflow_client] = override_mlflow_dependency
         yield client
         app.dependency_overrides = {}
+
+
+@pytest.fixture
+def gitlab_client():
+    return GitLabClient()
