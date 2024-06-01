@@ -67,7 +67,7 @@ class Settings(BaseSettings):
 
     KSERVE_SERVICE_ACCOUNT: str
 
-    DEFAULT_SERVER_TYPES: Dict[str, Dict[str, str]] = {
+    DEFAULT_INSTANCE_TYPES: Dict[str, Dict[str, str]] = {
         "ml.cpu.nano": {"cpu": "1", "memory": "512Mi"},
         "ml.cpu.micro": {"cpu": "1", "memory": "1Gi"},
         "ml.cpu.small": {"cpu": "1", "memory": "2Gi"},
@@ -77,7 +77,7 @@ class Settings(BaseSettings):
         "ml.cpu.2xlarge": {"cpu": "8", "memory": "32Gi"},
     }
 
-    CUSTOM_SERVER_TYPES: Annotated[
+    CUSTOM_INSTANCE_TYPES: Annotated[
         Dict[str, Dict[str, str]], BeforeValidator(parse_server_types)
     ] = {}
 
@@ -100,10 +100,10 @@ class Settings(BaseSettings):
         )
 
     @property
-    def SERVER_TYPES(self) -> Dict[str, Dict[str, str]]:
-        server_types = self.DEFAULT_SERVER_TYPES.copy()
-        server_types.update(self.CUSTOM_SERVER_TYPES)
-        return server_types
+    def INSTANCE_TYPES(self) -> Dict[str, Dict[str, str]]:
+        instance_types = self.DEFAULT_INSTANCE_TYPES.copy()
+        instance_types.update(self.CUSTOM_INSTANCE_TYPES)
+        return instance_types
 
 
 settings = Settings()
