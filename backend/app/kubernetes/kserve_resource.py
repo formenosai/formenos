@@ -46,8 +46,8 @@ class InferenceServiceResource(BaseResource):
             }
         )
 
-        cpu = settings.SERVER_TYPES[instance_type]["cpu"]
-        memory = settings.SERVER_TYPES[instance_type]["memory"]
+        cpu = settings.INSTANCE_TYPES[instance_type]["cpu"]
+        memory = settings.INSTANCE_TYPES[instance_type]["memory"]
         resources = {
             "requests": {"cpu": cpu, "memory": memory},
             "limits": {"cpu": cpu, "memory": memory},
