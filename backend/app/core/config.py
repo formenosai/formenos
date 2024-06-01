@@ -26,15 +26,15 @@ def parse_cors(v: Any) -> list[str] | str:
     raise ValueError(v)
 
 
-def parse_server_types(v: Any) -> Dict[str, Dict[str, str]]:
+def parse_instance_types(v: Any) -> Dict[str, Dict[str, str]]:
     """
-    Parse SERVER_TYPES from environment variable string.
+    Parse INSTANCE_TYPES from environment variable string.
 
     Args:
         v (Any): Value to be parsed.
 
     Returns:
-        Dict[str, Dict[str, str]]: Parsed server types.
+        Dict[str, Dict[str, str]]: Parsed instance types.
 
     Raises:
         ValueError: If the value cannot be parsed.
@@ -78,7 +78,7 @@ class Settings(BaseSettings):
     }
 
     CUSTOM_INSTANCE_TYPES: Annotated[
-        Dict[str, Dict[str, str]], BeforeValidator(parse_server_types)
+        Dict[str, Dict[str, str]], BeforeValidator(parse_instance_types)
     ] = {}
 
     POSTGRES_SERVER: str
